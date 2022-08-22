@@ -7,15 +7,17 @@ public class ArraysDemo {
         name[5] ="hyderabad";
         name[2] = "tokyo";
         name[1] = "newyork";
-        String fix="tokyo";
+        
         boolean found= true;
         for(String x : name){
-        	if(x == fix){
-                 found = true;
-                break;
-            }
-        }
-        System.out.println(found);
+            if("delhi".equals(x)){
+                found = true;
+                break;         
+             }
+        
 
-	}
+	     }
+        System.out.println("the String is there ::"+found);
+
+}
 }
