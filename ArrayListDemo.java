@@ -7,6 +7,7 @@ public class ArrayListDemo {
 
 	public static void main(String[] args){
 		ArrayList<String> foodList = new ArrayList<String>();
+		
 		foodList.add("dosa");
 		foodList.add("vada");
 		foodList.add("idli");
