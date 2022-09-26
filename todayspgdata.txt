@@ -1,0 +1,201 @@
+create database sowmya;
+CREATE TABLE student (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+CONSTRAINT PK_Person PRIMARY KEY (ID,LastName));
+ALTER TABLE student RENAME TO studentData;
+ALTER TABLE studentData ADD gender CHAR;
+ALTER TABLE studentData drop column firstname;
+ALTER TABLE studentData ADD firstname varchar(80);
+ALTER TABLE studentData RENAME COLUMN firstname to surname;
+Alter TABLE studentData ADD City varchar(40);
+ALTER TABLE studentData drop column city;
+Alter TABLE studentData ADD City varchar(50),ADD PostalCode INTEGER;
+ALTER TABLE studentData drop column surname;
+
+SELECT * from studentdata;
+insert into studentdata VALUES(101,'Naresh',21,'m','Delhi',11001);
+insert into studentdata VALUES(105,'Nelash',20,'m','Delhi',11071),
+(104,'Narendra',27,'m','Goa',81071);
+insert into studentdata VALUES(109,'Rena',20,'f','Hyedrabad',21071),
+(103,'rani',24,'f','Guntur',51071),
+(106,'suma',24,'f','Nellor',51871),
+(108,'Harini',22,'f','kadapa',51077),
+(102,'kiran',24,'m','Nijam',51971),
+(107,'vishnu',29,'m','Guntur',51071),
+(110,'Raju',27,'m','Guntur',51071);
+SELECT * from studentdata;
+
+SELECT * FROM studentdata
+WHERE City='Guntur';
+SELECT * FROM studentdata
+WHERE ID=101;
+SELECT * FROM studentdata
+WHERE age>24;
+SELECT * FROM studentdata
+WHERE age<27;
+SELECT * FROM studentdata
+WHERE age<=24;
+SELECT * FROM studentdata
+WHERE age>=27;
+SELECT * FROM studentdata
+WHERE age between 22 and 27;
+SELECT * FROM studentdata
+WHERE city like 'N%';
+SELECT * FROM studentdata
+WHERE city In ('Delhi');
+SELECT * FROM studentdata
+WHERE NOT City='kadapa';
+SELECT * FROM studentdata
+WHERE  City='Goa' and city='Guntur';
+SELECT * FROM studentdata
+WHERE  City='nijam' or city='guntur';
+SELECT * FROM studentdata
+ORDER BY City ASC, lastname DESC;
+SELECT * FROM studentdata
+ORDER BY Id;
+CREATE TABLE CustomerName (
+    CustomerId int NOT NULL,
+    ContactName varchar(255) NOT NULL,
+    Address varchar(255),city varchar(255),
+    postalcode integer ,countryt varchar(255),
+PRIMARY KEY (CustomerID));
+SELECT * FROM customername;
+ALTER table customername rename to CustomerData;
+SELECT * FROM customerdata;
+ALTER TABLE customerdata drop column countryt;
+ALTER TABLE customerdata add column country varchar(255);
+SELECT * FROM customerdata;
+INSERT into customerdata values(201,'sandy','Obere no 57','Berlin','10254','Germany'),
+(204,'Alfreds Futterkiste','Mataderos 2312','London','10264','UK'),
+(205,'Emparedados ','','Berlin','10354','Germany'),
+(206,'Berglunds ','120 Hanover Sq.','Mexico','10274','Mexico'),
+(212,'Antonio ',' ','Berlin','10224','Germany'),
+(214,'Berglunds','Avda.Constitución 2222','','10354','Swedon'),
+(209,'Thomas','Avda. de la Constitución 2222','Mexico','10254','Mexico'),
+(208,'Alfreds Trujillo','Mataderos 2312','London','10054','UK'),
+(210,'Christina','Mataderos 2312','Berlin','10754','Germany'),
+(211,' Futterkiste','Mataderos 2312','Leasa','10254','Germany'),
+(207,'Alfreds ','Berguvsvägen 8	','Mexico','13254','Germany'),
+(213,'Thomas Hardy','Mataderos 2212','London','80254','UK');
+SELECT ContactName, Address
+FROM Customerdata
+WHERE Address IS NULL;
+SELECT * from customerdata where address is Null;
+SELECT contactname from customerdata where city is not Null;
+UPDATE customerdata
+SET ContactName = 'Alfred Schmidt', City = 'Frankfurt'
+WHERE CustomerID = 212;
+select from customerdata
+where customerId=212;
+UPDATE customerdata
+SET ContactName='Juan'
+WHERE Country='Mexico';
+DELETE FROM Customerdata WHERE ContactName ='Alfreds Futterkiste';
+SELECT TOP 3 * FROM Customers
+WHERE Country='Germany';
+SELECT * FROM Customers
+WHERE Country='Germany'
+FETCH FIRST 3 ROWS ONLY;
+SELECT * FROM Customers
+LIMIT 3;
+create TABLE Products (productID int NOT NULL,
+    productName varchar(255) NOT NULL,
+    suplierid int ,categoryid int ,units varchar(255),
+    price real,
+    PRIMARY KEY (productID));
+insert into products values(1,'chees',2,1,'10*2 boxes',2000.4);
+insert into products values(2,'chsunut paste',4,2,'20 boxes',200000.4),
+(3,'Spring toster',6,1,'10boxes',30000.4),
+(4,'cherries',4,2,'20 boxes',20500.4),
+(5,'Apple cury',9,2,'12 boxes',250000.4),
+(6,'FrutsMix',7,1,'6 boxes',30000.4),
+(7,'coconut paste',2,3,'20 boxes',40000.4);
+
+SELECT MIN(Price) AS SmallestPrice
+FROM Products;
+SELECT MAX(Price) AS LargestPrice
+FROM Products;
+SELECT COUNT(ProductID)
+FROM Products;
+SELECT AVG(Price)
+FROM Products;
+alter table products add column quantity int;
+SELECT SUM(price)
+FROM products;
+SELECT * FROM Customerdata
+WHERE ContactName LIKE 'A%';
+SELECT * FROM Customerdata
+SELECT * FROM Customerdata
+WHERE ContactName LIKE '%ed%';
+SELECT CustomerID AS ID, ContactName AS Customer
+FROM Customerdata;
+create table orders(orderid int not null, customerid int ,order_date INTEGER);
+insert into orders values(1,201,20-04-2022);
+insert into orders values(1,201,20-04-2022),(2,212,2-04-2022),(3,207,20-06-2022),
+(1,201,20-04-2022);
+SELECT Orders.OrderID, Customerdata.ContactName, Orders.Order_Date
+FROM Orders
+INNER JOIN Customerdata ON Orders.CustomerID=Customerdata.CustomerID;
+SELECT Customerdata.ContactName, Orders.OrderID
+FROM Customerdata
+LEFT JOIN Orders ON Customerdata.CustomerID = Orders.CustomerID
+ORDER BY Customerdata.ContactName;
+SELECT Orders.OrderID, customerdata.contactname
+FROM Orders
+RIGHT JOIN customerdata ON Orders.customerID =customerdata.customerID
+ORDER BY Orders.OrderID;
+SELECT Customerdata.ContactName, Orders.OrderID
+FROM Customerdata
+FULL OUTER JOIN Orders ON Customerdata.CustomerID=Orders.CustomerID
+ORDER BY Customerdata.ContactName;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
